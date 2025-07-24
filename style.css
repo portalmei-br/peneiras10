@@ -1,0 +1,833 @@
+/* ========================================= */
+/* DESIGN PROFISSIONAL E ORGANIZADO DOS CARDS DE PENEIRAS */
+/* Hierarquia Clara - Máxima Usabilidade */
+/* ========================================= */
+
+/* Card Principal - Design Profissional */
+.peneira-card {
+    background: var(--bg-primary);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-light);
+    transition: all var(--transition-normal);
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.peneira-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    border-color: var(--primary-color);
+}
+
+.peneira-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    z-index: 1;
+}
+
+/* Header do Card - Status e Distância */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-lg) var(--space-lg) var(--space-md);
+    background: linear-gradient(135deg, rgba(248, 249, 250, 0.8) 0%, rgba(241, 243, 244, 0.6) 100%);
+    border-bottom: 1px solid var(--border-light);
+    position: relative;
+    z-index: 2;
+}
+
+.card-header.status-aberta {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(46, 125, 50, 0.05) 100%);
+    border-bottom-color: rgba(76, 175, 80, 0.15);
+}
+
+.card-header.status-encerrada {
+    background: linear-gradient(135deg, rgba(158, 158, 158, 0.08) 0%, rgba(117, 117, 117, 0.05) 100%);
+    border-bottom-color: rgba(158, 158, 158, 0.15);
+}
+
+.status-badge {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 2px solid;
+}
+
+.status-badge.aberta {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.15) 0%, rgba(46, 125, 50, 0.1) 100%);
+    color: var(--primary-color);
+    border-color: rgba(76, 175, 80, 0.3);
+}
+
+.status-badge.encerrada {
+    background: linear-gradient(135deg, rgba(158, 158, 158, 0.15) 0%, rgba(117, 117, 117, 0.1) 100%);
+    color: var(--text-secondary);
+    border-color: rgba(158, 158, 158, 0.3);
+}
+
+.status-badge.urgente {
+    background: linear-gradient(135deg, rgba(244, 67, 54, 0.15) 0%, rgba(211, 47, 47, 0.1) 100%);
+    color: #d32f2f;
+    border-color: rgba(244, 67, 54, 0.3);
+    animation: pulse-urgent 2s infinite;
+}
+
+@keyframes pulse-urgent {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+.status-icon {
+    font-size: var(--font-size-sm);
+}
+
+.distance-badge {
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+    color: var(--text-primary);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Conteúdo Principal do Card */
+.card-content {
+    padding: var(--space-lg);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+/* Seção de Título e Clube */
+.card-title-section {
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: var(--space-lg);
+}
+
+.peneira-title {
+    font-size: var(--font-size-xl);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+    line-height: var(--leading-snug);
+    letter-spacing: -0.025em;
+}
+
+.peneira-club {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.club-icon {
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    font-size: var(--font-size-sm);
+}
+
+/* Seção de Informações Principais */
+.card-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.info-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-sm) 0;
+}
+
+.info-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: var(--font-size-sm);
+    flex-shrink: 0;
+}
+
+.info-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.info-primary {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: var(--leading-snug);
+}
+
+.info-secondary {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-normal);
+}
+
+/* Data e Hora - Destaque Especial */
+.datetime-row {
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.08) 0%, rgba(25, 118, 210, 0.05) 100%);
+    border: 1px solid rgba(33, 150, 243, 0.15);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    margin-bottom: var(--space-sm);
+}
+
+.datetime-row .info-icon {
+    color: #1976D2;
+    background: rgba(33, 150, 243, 0.1);
+    border-radius: var(--radius-sm);
+    width: 32px;
+    height: 32px;
+    font-size: var(--font-size-base);
+}
+
+.datetime-row .info-primary {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: #1976D2;
+}
+
+/* Seção de Vagas */
+.vagas-section {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    border: 1px solid var(--border-light);
+}
+
+.vagas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-sm);
+}
+
+.vagas-title {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.vagas-count {
+    font-size: var(--font-size-lg);
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.vagas-progress {
+    width: 100%;
+    height: 8px;
+    background: var(--border-light);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    margin-bottom: var(--space-sm);
+}
+
+.vagas-progress-bar {
+    height: 100%;
+    border-radius: var(--radius-full);
+    transition: width var(--transition-normal);
+}
+
+.vagas-progress-bar.disponivel {
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-light) 100%);
+}
+
+.vagas-progress-bar.limitado {
+    background: linear-gradient(90deg, #ff9800 0%, #f57c00 100%);
+}
+
+.vagas-progress-bar.urgente {
+    background: linear-gradient(90deg, #f44336 0%, #d32f2f 100%);
+}
+
+.vagas-status {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    text-align: center;
+}
+
+.vagas-status.disponivel {
+    color: var(--primary-color);
+}
+
+.vagas-status.limitado {
+    color: #f57c00;
+}
+
+.vagas-status.urgente {
+    color: #d32f2f;
+}
+
+/* Seção de Prazo */
+.prazo-section {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.08) 0%, rgba(255, 143, 0, 0.05) 100%);
+    border: 1px solid rgba(255, 193, 7, 0.2);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    text-align: center;
+}
+
+.prazo-label {
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--space-xs);
+}
+
+.prazo-value {
+    font-size: var(--font-size-base);
+    font-weight: 700;
+    color: #f57c00;
+}
+
+.prazo-urgente {
+    background: linear-gradient(135deg, rgba(244, 67, 54, 0.08) 0%, rgba(211, 47, 47, 0.05) 100%);
+    border-color: rgba(244, 67, 54, 0.2);
+}
+
+.prazo-urgente .prazo-value {
+    color: #d32f2f;
+    animation: blink-urgent 1.5s infinite;
+}
+
+@keyframes blink-urgent {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* Rodapé do Card - Ações */
+.card-footer {
+    padding: var(--space-lg);
+    border-top: 1px solid var(--border-light);
+    background: linear-gradient(135deg, rgba(248, 249, 250, 0.5) 0%, rgba(255, 255, 255, 0.8) 100%);
+    margin-top: auto;
+}
+
+.card-actions {
+    display: flex;
+    gap: var(--space-md);
+    align-items: center;
+}
+
+.btn-primary {
+    flex: 1;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    color: var(--text-light);
+    border: none;
+    border-radius: var(--radius-lg);
+    padding: var(--space-md) var(--space-lg);
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left var(--transition-normal);
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-lighter) 100%);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-share {
+    width: 52px;
+    height: 52px;
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-share::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: var(--primary-color);
+    border-radius: 50%;
+    transition: all var(--transition-normal);
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.btn-share:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+.btn-share:hover {
+    color: var(--text-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-disabled {
+    flex: 1;
+    background: linear-gradient(135deg, #E0E0E0 0%, #BDBDBD 100%);
+    color: var(--text-secondary);
+    border: none;
+    border-radius: var(--radius-lg);
+    padding: var(--space-md) var(--space-lg);
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    cursor: not-allowed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+}
+
+/* Estados dos Cards */
+.peneira-card.encerrada {
+    opacity: 0.85;
+    filter: grayscale(20%);
+}
+
+.peneira-card.encerrada::before {
+    background: linear-gradient(90deg, #9E9E9E 0%, #757575 100%);
+}
+
+.peneira-card.encerrada .peneira-title {
+    color: var(--text-secondary);
+}
+
+.peneira-card.encerrada .peneira-club {
+    color: var(--text-tertiary);
+}
+
+/* Responsividade Profissional */
+@media (max-width: 1024px) {
+    .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-lg);
+    }
+}
+
+@media (max-width: 768px) {
+    .card-header {
+        padding: var(--space-md);
+        flex-direction: column;
+        gap: var(--space-sm);
+        align-items: stretch;
+    }
+    
+    .distance-badge {
+        align-self: flex-end;
+        font-size: var(--font-size-xs);
+    }
+    
+    .card-content {
+        padding: var(--space-md);
+        gap: var(--space-md);
+    }
+    
+    .peneira-title {
+        font-size: var(--font-size-lg);
+    }
+    
+    .peneira-club {
+        font-size: var(--font-size-base);
+    }
+    
+    .info-row {
+        padding: var(--space-xs) 0;
+    }
+    
+    .info-primary {
+        font-size: var(--font-size-sm);
+    }
+    
+    .info-secondary {
+        font-size: var(--font-size-xs);
+    }
+    
+    .datetime-row .info-primary {
+        font-size: var(--font-size-base);
+    }
+    
+    .vagas-section,
+    .prazo-section {
+        padding: var(--space-sm);
+    }
+    
+    .card-footer {
+        padding: var(--space-md);
+    }
+    
+    .card-actions {
+        gap: var(--space-sm);
+    }
+    
+    .btn-primary,
+    .btn-disabled {
+        padding: var(--space-sm) var(--space-md);
+        font-size: var(--font-size-xs);
+    }
+    
+    .btn-share {
+        width: 44px;
+        height: 44px;
+        font-size: var(--font-size-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .results-grid {
+        gap: var(--space-md);
+    }
+    
+    .card-header {
+        padding: var(--space-sm);
+    }
+    
+    .status-badge {
+        padding: var(--space-xs) var(--space-sm);
+        font-size: var(--font-size-xs);
+    }
+    
+    .distance-badge {
+        padding: var(--space-xs) var(--space-sm);
+        font-size: 0.7rem;
+    }
+    
+    .card-content {
+        padding: var(--space-sm);
+    }
+    
+    .peneira-title {
+        font-size: var(--font-size-base);
+    }
+    
+    .peneira-club {
+        font-size: var(--font-size-sm);
+    }
+    
+    .club-icon {
+        width: 20px;
+        height: 20px;
+        font-size: 0.7rem;
+    }
+    
+    .info-icon {
+        width: 16px;
+        height: 16px;
+        font-size: 0.7rem;
+    }
+    
+    .datetime-row .info-icon {
+        width: 24px;
+        height: 24px;
+        font-size: var(--font-size-sm);
+    }
+    
+    .info-primary {
+        font-size: 0.8rem;
+    }
+    
+    .info-secondary {
+        font-size: 0.7rem;
+    }
+    
+    .datetime-row .info-primary {
+        font-size: var(--font-size-sm);
+    }
+    
+    .vagas-title,
+    .prazo-label {
+        font-size: 0.7rem;
+    }
+    
+    .vagas-count {
+        font-size: var(--font-size-base);
+    }
+    
+    .prazo-value {
+        font-size: var(--font-size-sm);
+    }
+    
+    .card-footer {
+        padding: var(--space-sm);
+    }
+    
+    .btn-primary,
+    .btn-disabled {
+        padding: var(--space-xs) var(--space-sm);
+        font-size: 0.7rem;
+    }
+    
+    .btn-share {
+        width: 36px;
+        height: 36px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Animações Profissionais */
+@keyframes card-entrance {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.peneira-card {
+    animation: card-entrance 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Micro-interações */
+.status-badge:hover {
+    transform: scale(1.02);
+}
+
+.distance-badge:hover {
+    transform: scale(1.05);
+}
+
+.info-row:hover {
+    background: rgba(27, 94, 32, 0.02);
+    border-radius: var(--radius-sm);
+}
+
+.vagas-section:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+.prazo-section:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Estados de Loading */
+.peneira-card.loading {
+    opacity: 0.6;
+    pointer-events: none;
+    position: relative;
+}
+
+.peneira-card.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.4) 50%, 
+        transparent 100%);
+    animation: shimmer 1.5s infinite;
+    z-index: 10;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Acessibilidade Aprimorada */
+.peneira-card:focus-within {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.btn-primary:focus,
+.btn-share:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Modo Escuro */
+@media (prefers-color-scheme: dark) {
+    .peneira-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .card-header {
+        background: rgba(0, 0, 0, 0.2);
+        border-bottom-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .card-footer {
+        background: rgba(0, 0, 0, 0.2);
+        border-top-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .vagas-section {
+        background: rgba(0, 0, 0, 0.1);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Alto Contraste */
+@media (prefers-contrast: high) {
+    .peneira-card {
+        border-width: 2px;
+    }
+    
+    .status-badge,
+    .distance-badge {
+        border-width: 2px;
+    }
+    
+    .peneira-title,
+    .status-badge,
+    .vagas-title {
+        font-weight: 800;
+    }
+}
+
+/* Redução de Movimento */
+@media (prefers-reduced-motion: reduce) {
+    .peneira-card,
+    .btn-primary,
+    .btn-share,
+    .status-badge,
+    .distance-badge,
+    .vagas-section,
+    .prazo-section {
+        transition: none;
+        animation: none;
+    }
+    
+    .peneira-card:hover,
+    .btn-primary:hover,
+    .btn-share:hover {
+        transform: none;
+    }
+    
+    .pulse-urgent,
+    .blink-urgent {
+        animation: none;
+    }
+}
+
+/* Performance */
+.peneira-card {
+    contain: layout style paint;
+    will-change: transform;
+}
+
+.btn-primary,
+.btn-share {
+    contain: layout style paint;
+}
+
+/* Grid Layout Otimizado */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+    align-items: start;
+}
+
+/* Melhorias para Impressão */
+@media print {
+    .peneira-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 2px solid #000;
+        margin-bottom: var(--space-lg);
+    }
+    
+    .card-footer {
+        display: none;
+    }
+    
+    .peneira-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+    
+    .status-badge,
+    .distance-badge {
+        background: #f0f0f0 !important;
+        color: #000 !important;
+    }
+}
+
